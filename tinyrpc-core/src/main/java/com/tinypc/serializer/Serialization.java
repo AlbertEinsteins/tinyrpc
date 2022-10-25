@@ -1,4 +1,4 @@
-package com.tinypc.serialize;
+package com.tinypc.serializer;
 
 public interface Serialization<T> {
     // 将对象序列化

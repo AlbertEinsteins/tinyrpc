@@ -1,12 +1,10 @@
-package com.tinypc.serialize;
+package com.tinypc.serializer;
 
 import com.tinyrpc.exception.SerializeException;
 
 import java.io.*;
 
-public class JDKSerializer<T> implements Serialization<T>, Deserialization<T> {
-
-
+public class JDKSerializer<T> implements Serializer<T> {
     @Override
     public byte[] serialize(T data) {
         if(!(data instanceof Serializable)) {

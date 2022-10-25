@@ -22,7 +22,7 @@
 
 
         <netty.version></netty.version>
-        <logback.version>1.1.7</logback.version>
+        <logback.version>1.2.10</logback.version>
         <sl4j.version>1.7.7</sl4j.version>
         <nacos-client>2.0.3</nacos-client>
     </properties>
