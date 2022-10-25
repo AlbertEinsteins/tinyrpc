@@ -16,28 +16,16 @@ public class ProtocalBuilder {
     private ByteBuffer buffer;
 
     // 序列化类型, JSON序列化
-    private static final byte SERIALIZE_JSON_TYPE = 1;
+    public static final byte SERIALIZE_JSON_TYPE = 1;
     // Hessian 序列化
-    private static final byte SERIALIZE_HESSIAN_TYPE = (1 << 1);
+    public static final byte SERIALIZE_HESSIAN_TYPE = (1 << 1);
     // JDK 序列化
-    private static final byte SERIALIZE_JDK_TYPE = (1 << 2);
+    public static final byte SERIALIZE_JDK_TYPE = (1 << 2);
 
     private void writeVersion(int version) {
         buffer.put(0, (byte) version);
     }
 
-    private void writeSerializeType(int serializeType) {
-        if((1) == serializeType) {
-            buffer.put(1, SERIALIZE_JSON_TYPE);
-        }
-        else if((1 << 1) == serializeType) {
-            buffer.put(1, SERIALIZE_HESSIAN_TYPE);
-        }
-        else if ((1 << 2) == serializeType) {
-            buffer.put(1, SERIALIZE_JDK_TYPE);
-        }
-        else {
-
-        }
+    private void writeSerializeType(byte serializeType) {
     }
 }
