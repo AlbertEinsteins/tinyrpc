@@ -14,7 +14,6 @@ public enum SerializeType {
     PROTOBUF_SERIALIZE(1 << 3);
 
 
-
     public byte code;
     SerializeType(byte code) {
         this.code = code;

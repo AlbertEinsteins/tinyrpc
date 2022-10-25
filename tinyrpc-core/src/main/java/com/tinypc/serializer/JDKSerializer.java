@@ -8,7 +8,7 @@ public class JDKSerializer<T> implements Serializer<T> {
     @Override
     public byte[] serialize(T data) {
         if(!(data instanceof Serializable)) {
-            throw new SerializeException("class must implment Serialization Interface");
+            throw new SerializeException("class must implement Serialization Interface");
         }
         byte[] bytes;
         try {

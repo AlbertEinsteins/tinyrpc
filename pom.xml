@@ -21,15 +21,27 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 
-        <netty.version></netty.version>
+        <netty.version>4.1.68.Final</netty.version>
         <logback.version>1.2.10</logback.version>
         <sl4j.version>1.7.7</sl4j.version>
         <nacos-client>2.0.3</nacos-client>
+        <spring.version>5.3.20</spring.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
+<!--            netty-->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+<!--            spring-->
+
+
+<!--            日志-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
