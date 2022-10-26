@@ -5,9 +5,8 @@ import com.tinyrpc.entity.enumerate.SerializeType;
 /***
  * 服务调用时，传递的实体
  *
- * @param <T> 对象
  */
-public class RpcRequest<T> {
+public class RpcRequest {
     /**
      * 以下四个字段是远程调用的必要字段
      */

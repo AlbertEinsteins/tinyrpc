@@ -92,7 +92,7 @@ public class ProtocalBuilder {
         for(int i = 0; i < dataLen; i++) {
             body[i] = buffer.get();
         }
-        return TPackage.create(version, PackageType.fromInt(packageType),
+        return TPackage.create(PackageType.fromInt(packageType),
                 SerializeType.fromByteCode(serialType), body);
     }
 }
