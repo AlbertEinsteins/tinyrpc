@@ -1,6 +1,8 @@
 package com.tinyrpc.entity;
 
-public class RpcResponse {
+import java.io.Serializable;
+
+public class RpcResponse implements Serializable {
     private Object result;
     private Class<?> returnType;
 

@@ -26,7 +26,7 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = ch.pipeline();
 
         // 添加入站处理器
-        pipeline.addLast(new RpcClientInHandler(waitForResponse, response));
+        pipeline.addLast(new TPackageClientDecoder(waitForResponse, response));
 
 
         // 添加出站处理, 将RpcRequest封装为TPackage报文

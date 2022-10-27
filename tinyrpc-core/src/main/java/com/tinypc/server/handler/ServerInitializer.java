@@ -9,7 +9,7 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
-        // 添加处理器
-        pipeline.addLast(new RpcServerHandler());
+        // 添加入站处理器
+        pipeline.addLast(new TPackageServerDecoder());
     }
 }

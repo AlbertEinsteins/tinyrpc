@@ -2,11 +2,13 @@ package com.tinyrpc.entity;
 
 import com.tinyrpc.entity.enumerate.SerializeType;
 
+import java.io.Serializable;
+
 /***
  * 服务调用时，传递的实体
  *
  */
-public class RpcRequest {
+public class RpcRequest implements Serializable {
     /**
      * 以下四个字段是远程调用的必要字段
      */

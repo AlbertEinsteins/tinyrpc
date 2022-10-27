@@ -7,10 +7,10 @@ import io.netty.channel.*;
 import java.util.concurrent.CountDownLatch;
 
 
-public class RpcClientInHandler extends ChannelInboundHandlerAdapter {
+public class TPackageClientDecoder extends ChannelInboundHandlerAdapter {
     private RpcResponse response;
     private CountDownLatch waitForResponse;
-    public RpcClientInHandler(CountDownLatch waitForResponse, RpcResponse response) {
+    public TPackageClientDecoder(CountDownLatch waitForResponse, RpcResponse response) {
         this.waitForResponse = waitForResponse;
         this.response = response;
     }

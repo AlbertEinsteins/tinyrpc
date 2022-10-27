@@ -13,7 +13,10 @@ public class TPackage implements Serializable {
     private static final byte DEFAULT_VERSION = 1;
 
     public static TPackage create(PackageType packageType, SerializeType serialType, byte[] body) {
-        return new TPackage(DEFAULT_VERSION, packageType, serialType, body);
+        return TPackage.create(DEFAULT_VERSION, packageType, serialType, body);
+    }
+    public static TPackage create(byte version, PackageType packageType, SerializeType serialType, byte[] body) {
+        return new TPackage(version, packageType, serialType, body);
     }
 
     private TPackage(byte version, PackageType packageType, SerializeType serialType, byte[] body) {
