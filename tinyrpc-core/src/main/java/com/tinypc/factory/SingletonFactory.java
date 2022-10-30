@@ -7,7 +7,7 @@ public class SingletonFactory {
 
     private static final ConcurrentHashMap<Class<?>, Object> instances = new ConcurrentHashMap<>();
 
-    public static <T> T getInstance(Class<T> cls) {
+    public static <T> T getInstance(Class<?> cls) {
         Object obj = instances.get(cls);
         if(null == obj) {
             synchronized (SingletonFactory.class) {
@@ -18,8 +18,8 @@ public class SingletonFactory {
                     } catch (InstantiationException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }
+                    instances.put(cls, obj);
                 }
-                instances.put(cls, obj);
             }
         }
         return (T) obj;

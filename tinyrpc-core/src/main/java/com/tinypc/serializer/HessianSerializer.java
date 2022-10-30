@@ -1,13 +1,46 @@
 package com.tinypc.serializer;
 
-public class HessianSerializer<T> implements Serializer<T> {
+import com.caucho.hessian.io.HessianInput;
+import com.caucho.hessian.io.HessianOutput;
+import com.tinyrpc.exception.SerializeException;
+import org.openjsse.net.ssl.OpenJSSE;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
+
+public class HessianSerializer implements Serializer {
     @Override
-    public T deserialize(byte[] data) {
-        return null;
+    public Object deserialize(byte[] data) {
+        ByteArrayInputStream bais = new ByteArrayInputStream(data);
+        HessianInput input = new HessianInput(bais);
+        Object o;
+        try {
+            o = input.readObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return o;
     }
 
     @Override
-    public byte[] serialize(T data) {
-        return new byte[0];
+    public byte[] serialize(Object obj) {
+        if(!(obj instanceof Serializable)) {
+            throw new SerializeException("class must implement Serialization Interface");
+        }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        HessianOutput hessianOutput = new HessianOutput(baos);
+        byte[] data;
+        try {
+            hessianOutput.writeObject(obj);
+            data = baos.toByteArray();
+
+            hessianOutput.close();
+            baos.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return data;
     }
 }

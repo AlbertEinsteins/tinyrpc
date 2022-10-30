@@ -1,6 +1,5 @@
 package com.tinypc.server;
 
-import com.tinypc.factory.SingletonFactory;
 import com.tinypc.server.handler.ServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -52,9 +51,5 @@ public class RpcServer {
             sub.shutdownGracefully();
             System.out.println("服务器关闭...");
         }
-    }
-
-    public static void main(String[] args) {
-        new RpcServer().startServer();
     }
 }

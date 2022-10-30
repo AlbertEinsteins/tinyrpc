@@ -4,9 +4,10 @@ import com.tinyrpc.exception.SerializeException;
 
 import java.io.*;
 
-public class JDKSerializer<T> implements Serializer<T> {
+public class JDKSerializer implements Serializer {
+
     @Override
-    public byte[] serialize(T data) {
+    public byte[] serialize(Object data) {
         if(!(data instanceof Serializable)) {
             throw new SerializeException("class must implement Serialization Interface");
         }
@@ -26,13 +27,13 @@ public class JDKSerializer<T> implements Serializer<T> {
     }
 
     @Override
-    public T deserialize(byte[] bytes) {
-        T object = null;
+    public Object deserialize(byte[] bytes) {
+        Object object;
         try {
             ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(bais);
 
-            object = (T) ois.readObject();
+            object = ois.readObject();
 
             bais.close();
             ois.close();

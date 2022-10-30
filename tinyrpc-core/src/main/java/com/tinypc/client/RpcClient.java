@@ -1,14 +1,10 @@
 package com.tinypc.client;
 
 import com.tinypc.client.handler.ClientInitializer;
-import com.tinypc.serializer.JDKSerializer;
 import com.tinyrpc.entity.RpcRequest;
 import com.tinyrpc.entity.RpcResponse;
-import com.tinyrpc.entity.TPackage;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -35,7 +31,7 @@ public class RpcClient {
     // 拿到和服务器交互的channel
     private Channel channel;
 
-    // 等待读线程将服务器返回的结果写到response
+    // 等待读线程将服务器返回的结果写到response的锁
     private CountDownLatch waitForResponse;
     private RpcResponse response;
     // 需要外部注入请求内容
@@ -86,17 +82,8 @@ public class RpcClient {
         return this.response;
     }
     public RpcResponse getResponse(RpcRequest rpcRequest) {
-        // 启动服务器
+        // 设置rpc请求，发送报文
         setRpcRequest(rpcRequest);
         return this.getResponse();
     }
-
-    public static void main(String[] args) {
-        RpcClient rpcClient = new RpcClient(6700);
-        RpcResponse resp = rpcClient.getResponse(new RpcRequest("asd", "123",
-                        new Class[]{String.class}, new Object[]{1, 2, 3}));
-
-
-    }
-
 }

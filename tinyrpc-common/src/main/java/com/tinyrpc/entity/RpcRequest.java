@@ -1,6 +1,5 @@
 package com.tinyrpc.entity;
 
-import com.tinyrpc.entity.enumerate.SerializeType;
 
 import java.io.Serializable;
 
@@ -9,27 +8,29 @@ import java.io.Serializable;
  *
  */
 public class RpcRequest implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 以下四个字段是远程调用的必要字段
      */
-    private String className;
+
+    private Class<?> className;
     private String methodName;
     private Class<?>[] parameterTypes;
     private Object[] parameters;
 
 
-    public RpcRequest(String className, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
+    public RpcRequest(Class<?> className, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
         this.className = className;
         this.methodName = methodName;
         this.parameterTypes = parameterTypes;
         this.parameters = parameters;
     }
 
-    public String getClassName() {
+    public Class<?> getClassName() {
         return className;
     }
 
-    public void setClassName(String className) {
+    public void setClassName(Class<?> className) {
         this.className = className;
     }
 

@@ -3,6 +3,7 @@ package com.tinyrpc.entity;
 import java.io.Serializable;
 
 public class RpcResponse implements Serializable {
+
     private Object result;
     private Class<?> returnType;
 

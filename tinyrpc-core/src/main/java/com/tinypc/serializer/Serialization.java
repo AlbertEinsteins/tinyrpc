@@ -1,6 +1,6 @@
 package com.tinypc.serializer;
 
-public interface Serialization<T> {
+public interface Serialization {
     // 将对象序列化
-    byte[] serialize(T data);
+    byte[] serialize(Object data);
 }

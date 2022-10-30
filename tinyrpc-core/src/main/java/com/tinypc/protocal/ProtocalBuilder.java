@@ -1,6 +1,5 @@
 package com.tinypc.protocal;
 
-import com.tinyrpc.entity.RpcRequest;
 import com.tinyrpc.entity.TPackage;
 import com.tinyrpc.entity.enumerate.PackageType;
 import com.tinyrpc.entity.enumerate.SerializeType;
@@ -49,8 +48,8 @@ public class ProtocalBuilder {
 
         buffer.putInt(6, data.length);
         // 从第10个字节起放数据体
-        for(int i = dataOffset; i < data.length; i++)
-            buffer.put(i, data[i - dataOffset]);
+        for(int i = 0; i < data.length; i++)
+            buffer.put(i + dataOffset, data[i]);
     }
 
     //获取编码后的字节数组

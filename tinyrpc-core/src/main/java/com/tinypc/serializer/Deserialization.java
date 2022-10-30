@@ -1,5 +1,5 @@
 package com.tinypc.serializer;
 
-public interface Deserialization<T> {
-    T deserialize(byte[] data);
+public interface Deserialization {
+    Object deserialize(byte[] data);
 }

@@ -1,5 +1,7 @@
 package com.tinypc.client.handler;
 
+import com.tinypc.protocal.TPackageDecoder;
+import com.tinypc.protocal.TPackageEncoder;
 import com.tinyrpc.entity.RpcResponse;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -16,7 +18,6 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
         this.response = response;
     }
 
-
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         /**
@@ -25,12 +26,12 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
          */
         ChannelPipeline pipeline = ch.pipeline();
 
-        // 添加入站处理器
-        pipeline.addLast(new TPackageClientDecoder(waitForResponse, response));
-
-
         // 添加出站处理, 将RpcRequest封装为TPackage报文
         // 所谓出站就是继承OutboundHandler接口的类
         pipeline.addLast(new TPackageEncoder());
+
+        // 添加入站处理器
+        pipeline.addLast(new TPackageDecoder());
+        pipeline.addLast(new RpcResponseHandler(waitForResponse, response));
     }
 }
