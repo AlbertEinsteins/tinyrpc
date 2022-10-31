@@ -1,6 +1,7 @@
 package com.tinypc.server.handler;
 
 import com.tinypc.context.BodySerializerContext;
+import com.tinypc.core.skeleton.ApplicationContextSkeleton;
 import com.tinypc.core.skeleton.ISkeleton;
 import com.tinypc.core.skeleton.ReflectionSkeleton;
 import com.tinypc.factory.SingletonFactory;
@@ -19,14 +20,13 @@ public class RpcRequestHandler extends ChannelInboundHandlerAdapter {
 
     public RpcRequestHandler() {
         this.bodySerializerContext = SingletonFactory.getInstance(BodySerializerContext.class);
-        this.skeleton = SingletonFactory.getInstance(ReflectionSkeleton.class);
+        this.skeleton = SingletonFactory.getInstance(ApplicationContextSkeleton.class);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         TPackage pkg = (TPackage) msg;
         if(pkg.getPackageType() == PackageType.RPC_REQUEST) {
-            //todo
             SerializeType serializeType = pkg.getSerialType();
             System.out.println(pkg.getBody().length);
             RpcRequest rpcRequest = (RpcRequest) bodySerializerContext.deSerializeBody(pkg.getBody(), serializeType);
