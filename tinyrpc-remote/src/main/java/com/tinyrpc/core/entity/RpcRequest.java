@@ -13,24 +13,24 @@ public class RpcRequest implements Serializable {
      * 以下四个字段是远程调用的必要字段
      */
 
-    private Class<?> className;
+    private String className;
     private String methodName;
     private Class<?>[] parameterTypes;
     private Object[] parameters;
 
     public RpcRequest() { }
-    public RpcRequest(Class<?> className, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
+    public RpcRequest(String className, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
         this.className = className;
         this.methodName = methodName;
         this.parameterTypes = parameterTypes;
         this.parameters = parameters;
     }
 
-    public Class<?> getClassName() {
+    public String getClassName() {
         return className;
     }
 
-    public void setClassName(Class<?> className) {
+    public void setClassName(String className) {
         this.className = className;
     }
 

@@ -1,0 +1,5 @@
+# Initialize server and interface
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.tinyrpc.tinyrpcstarter.RpcServerAutoConfiguration,\
+  com.tinyrpc.tinyrpcstarter.RpcClientAutoConfiguration
+

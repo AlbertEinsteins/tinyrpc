@@ -8,9 +8,14 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/*
 *.iws
 *.iml
 *.ipr
+
+# test module
+tinyrpc-springboot-product/*
+tinyrpc-springboot-user/*
 
 ### Eclipse ###
 .apt_generated

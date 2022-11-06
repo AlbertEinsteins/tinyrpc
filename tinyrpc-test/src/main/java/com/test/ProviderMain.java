@@ -36,7 +36,6 @@ public class ProviderMain {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProviderMain.class);
         SpringUtils.setApplicationContext(context);
 
-
         start();
     }
 }

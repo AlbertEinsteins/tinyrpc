@@ -6,13 +6,18 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class RpcServer {
+public class RpcServer implements Runnable {
     private final Integer port;
     private final String host;
 
     private static final String DEFAULT_HOST = "127.0.0.1";
 
     private static final Integer DEFAULT_PORT = 6700;
+
+    @Override
+    public void run() {
+        this.startServer();
+    }
 
     public RpcServer(String host, Integer port) {
         this.port = port;
@@ -26,6 +31,8 @@ public class RpcServer {
     public RpcServer(Integer port) {
         this(DEFAULT_HOST, port);
     }
+
+
 
     public void startServer() {
         this.start0();

@@ -6,6 +6,9 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/tinyrpc-registration/pom.xml" />
+        <option value="$PROJECT_DIR$/tinyrpc-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/tinyrpc-springboot-product/pom.xml" />
+        <option value="$PROJECT_DIR$/tinyrpc-springboot-user/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

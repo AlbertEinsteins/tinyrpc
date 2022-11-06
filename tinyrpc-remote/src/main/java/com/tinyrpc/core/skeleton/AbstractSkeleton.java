@@ -1,4 +1,4 @@
-package com.tinyrpc.core.skeleton.skeleton;
+package com.tinyrpc.core.skeleton;
 
 import com.tinyrpc.core.entity.RpcRequest;
 
@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 public abstract class AbstractSkeleton implements ISkeleton {
 
-   abstract Object getSubInstance(Class<?> clsName);
+    abstract Object getSubInstance(String clsName);
 
     @Override
     public Object invokeMethod(RpcRequest request) {
