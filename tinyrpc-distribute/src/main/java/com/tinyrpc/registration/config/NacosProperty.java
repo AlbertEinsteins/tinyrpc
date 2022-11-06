@@ -3,7 +3,7 @@ package com.tinyrpc.registration.config;
 
 public class NacosProperty {
     public String nacosAddr;
-    private static final String DEFAULT_NACOS_ADDR = "124.220.16.14:8848";
+    public static final String DEFAULT_NACOS_ADDR = "124.220.16.14:8848";
 
     public NacosProperty() {
         this.nacosAddr = DEFAULT_NACOS_ADDR;

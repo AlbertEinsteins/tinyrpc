@@ -1,4 +1,4 @@
-package com.tinyrpc.core.skeleton.skeleton;
+package com.tinyrpc.core.skeleton;
 
 import org.reflections.Reflections;
 
@@ -17,19 +17,26 @@ public class ReflectionSkeleton extends AbstractSkeleton {
      * @param clsName
      * @return
      */
-    public Object getSubInstance(Class<?> clsName) {
+    public Object getSubInstance(String clsName) {
         Object o = instancesMap.get(clsName);
+        Class<?> aClass = null;
+        try {
+            aClass = Class.forName(clsName);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
         if(null == o) {
             synchronized (ReflectionSkeleton.class) {
                 o = instancesMap.get(clsName);
                 if(null == o) {
                     try {
-                        Class<?> subClass = getSubClass(clsName);
+                        Class<?> subClass = getSubClass(aClass);
                         o = subClass.newInstance() ;
                     } catch (InstantiationException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }
-                    instancesMap.put(clsName, o);
+                    instancesMap.put(aClass, o);
                 }
             }
         }
@@ -37,6 +44,7 @@ public class ReflectionSkeleton extends AbstractSkeleton {
      }
 
     private Class<?> getSubClass(Class<?> interfaceName) {
+
         Reflections reflections = new Reflections(interfaceName.getPackage().getName());
         Set<Class<?>> subClasses = reflections.getSubTypesOf((Class<Object>) interfaceName);
         return subClasses.iterator().next();

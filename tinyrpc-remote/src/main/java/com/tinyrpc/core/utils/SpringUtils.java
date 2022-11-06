@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 
 /**
  * 工具类
- * 用来获取Spring容器
+ * 用来获取Spring容器（项目实现不依赖于Spring，需要外部提供）
  */
 public class SpringUtils {
     private static ApplicationContext applicationContext;
